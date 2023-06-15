@@ -3,6 +3,7 @@ import MainLayout from '../components/layouts/MainLayout';
 import SignupPage from '../pages/SignupPage/SignupPage';
 import TodoPage from '../pages/TodoPage/TodoPage';
 import NotFoundPage from '../pages/Error/404';
+import LandingPage from '../pages/LandingPage/LandingPage';
 import SigninPage from '../pages/SigninPage/SigninPage';
 
 export const router = createBrowserRouter([
@@ -11,7 +12,11 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: 'signin',
+        path: '/',
+        element: <LandingPage />
+      },
+      {
+        path: '/signin',
         element: <SigninPage />
       },
       {
