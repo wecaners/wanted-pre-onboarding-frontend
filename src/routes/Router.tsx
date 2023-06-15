@@ -3,6 +3,7 @@ import MainLayout from '../components/layouts/MainLayout';
 import SignInPage from '../pages/SigninPage/SignInPage';
 import SignupPage from '../pages/SignupPage/SignupPage';
 import TodoPage from '../pages/TodoPage/TodoPage';
+import NotFoundPage from '../pages/Error/404';
 
 export const router = createBrowserRouter([
   {
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
         element: <TodoPage />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />
   }
 ]);
