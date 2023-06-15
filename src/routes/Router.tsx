@@ -5,6 +5,8 @@ import TodoPage from '../pages/TodoPage/TodoPage';
 import NotFoundPage from '../pages/Error/404';
 import LandingPage from '../pages/LandingPage/LandingPage';
 import SigninPage from '../pages/SigninPage/SigninPage';
+import NoAuthGuard from '../components/guards/NoAuthGuard';
+import AuthGuard from '../components/guards/AuthGuard';
 
 export const router = createBrowserRouter([
   {
@@ -16,16 +18,26 @@ export const router = createBrowserRouter([
         element: <LandingPage />
       },
       {
-        path: '/signin',
-        element: <SigninPage />
+        element: <NoAuthGuard />,
+        children: [
+          {
+            path: '/signin',
+            element: <SigninPage />
+          },
+          {
+            path: '/signup',
+            element: <SignupPage />
+          }
+        ]
       },
       {
-        path: '/signup',
-        element: <SignupPage />
-      },
-      {
-        path: '/todos',
-        element: <TodoPage />
+        element: <AuthGuard />,
+        children: [
+          {
+            path: '/todo',
+            element: <TodoPage />
+          }
+        ]
       }
     ]
   },
