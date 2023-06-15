@@ -4,6 +4,7 @@ import EmailValidationCheck from '../../utils/EmailValidationCheck';
 import PasswordValidationCheck from '../../utils/PasswordValidationCheck';
 import { useNavigate } from 'react-router-dom';
 import { signin } from '../../apis/api/auth/signin';
+import { setAccessToken } from '../../utils/localStorage';
 
 export default function SigninForm() {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ export default function SigninForm() {
     try {
       const response = await signin(values);
       if (response.status === 200) {
+        console.log(response);
+        setAccessToken(response.data.access_token);
         alert('로그인 되었습니다.');
         navigate('/todo');
       }

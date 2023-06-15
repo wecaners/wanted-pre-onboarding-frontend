@@ -11,5 +11,5 @@ export interface SigninResponse {
 }
 
 export function signin(data: SigninParams) {
-  return basicApi.post<void>(APIS.SIGNIN, data);
+  return basicApi.post<SigninResponse>(APIS.SIGNIN, data);
 }
