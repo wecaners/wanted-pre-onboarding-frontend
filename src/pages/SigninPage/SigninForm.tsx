@@ -26,7 +26,7 @@ export default function SigninForm() {
         navigate('/todo');
       }
     } catch (e: unknown) {
-      console.log(e);
+      alert('로그인에 실패하셨습니다.');
     }
   };
 

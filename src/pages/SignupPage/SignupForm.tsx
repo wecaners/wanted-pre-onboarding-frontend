@@ -24,7 +24,7 @@ export default function SignupForm() {
         navigate('/signin');
       }
     } catch (e: unknown) {
-      console.log(e);
+      alert('회원가입에 실패했습니다.');
     }
   };
 
