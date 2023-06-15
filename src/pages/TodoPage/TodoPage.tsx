@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CreateTodoRequest, createTodo } from '../../apis/api/todos/createTodo';
 import { Todo } from '../../types/Todo';
 import TodoList from './TodoList';
+import { getTodo } from '../../apis/api/todos/getTodo';
 
 export default function TodoPage() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -29,6 +30,27 @@ export default function TodoPage() {
       alert('Todo생성에 실패했습니다.');
     }
   }
+
+  useEffect(() => {
+    async function fetchTodo() {
+      try {
+        const response = await getTodo();
+        if (response.status === 200) {
+          const newTodos = response.data.map(
+            ({ id, todo, isCompleted }: Todo) => ({
+              id,
+              todo,
+              isCompleted
+            })
+          );
+          setTodos(newTodos);
+        }
+      } catch (e: unknown) {
+        alert('Todo를 읽어올 수 없습니다.');
+      }
+    }
+    fetchTodo();
+  }, []);
 
   return (
     <article className='space-y-4'>
