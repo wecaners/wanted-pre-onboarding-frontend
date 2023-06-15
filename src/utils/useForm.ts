@@ -2,7 +2,16 @@ import { useState } from 'react';
 import { signup } from '../apis/api/auth/signup';
 import { useNavigate } from 'react-router-dom';
 
-export default function useForm({ initialValues, onSubmit, validate }: any) {
+interface useFormProps {
+  email: string;
+  password: string;
+}
+
+export default function useForm({
+  initialValues
+}: {
+  initialValues: useFormProps;
+}) {
   const [values, setValues] = useState(initialValues);
   const navigate = useNavigate();
 
@@ -18,8 +27,8 @@ export default function useForm({ initialValues, onSubmit, validate }: any) {
         alert('회원가입 되었습니다.');
         navigate('/signin');
       }
-    } catch (e: any) {
-      alert(e.error);
+    } catch (e: unknown) {
+      console.log(e);
     }
   };
   return {
