@@ -30,6 +30,7 @@ export default function SignupForm() {
         value={values.email}
       />
       <input
+        type='password'
         name='password'
         data-testid='password-input'
         className='p-2 border border-blue-500 rounded-2xl '
