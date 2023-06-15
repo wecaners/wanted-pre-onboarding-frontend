@@ -1,4 +1,5 @@
 export const APIS = {
   SIGNUP: '/auth/signup',
-  SIGNIN: '/auth/signin'
+  SIGNIN: '/auth/signin',
+  TODO: '/todos'
 };
