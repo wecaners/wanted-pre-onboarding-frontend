@@ -3,9 +3,9 @@ import useForm from '../../utils/useForm';
 import EmailValidationCheck from '../../utils/EmailValidationCheck';
 import PasswordValidationCheck from '../../utils/PasswordValidationCheck';
 import { useNavigate } from 'react-router-dom';
-import { signup } from '../../apis/api/auth/signup';
+import { signin } from '../../apis/api/auth/signin';
 
-export default function SignupForm() {
+export default function SigninForm() {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState<boolean>(true);
   const { values, handleChange } = useForm({
@@ -14,14 +14,13 @@ export default function SignupForm() {
       password: ''
     }
   });
-
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     try {
-      const response = await signup(values);
-      if (response.status === 201) {
-        alert('회원가입 되었습니다.');
-        navigate('/signin');
+      const response = await signin(values);
+      if (response.status === 200) {
+        alert('로그인 되었습니다.');
+        navigate('/todo');
       }
     } catch (e: unknown) {
       console.log(e);
@@ -64,7 +63,7 @@ export default function SignupForm() {
         onClick={handleSubmit}
         disabled={disabled}
       >
-        회원가입
+        로그인
       </button>
     </form>
   );
