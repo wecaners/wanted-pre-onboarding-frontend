@@ -24,7 +24,6 @@ export default function TodoPage() {
         const newTodo: Todo = { id, todo, isCompleted };
         setTodos([...todos, newTodo]);
         setTodoInput('');
-        console.log(todos);
       }
     } catch (e: unknown) {
       alert('Todo생성에 실패했습니다.');

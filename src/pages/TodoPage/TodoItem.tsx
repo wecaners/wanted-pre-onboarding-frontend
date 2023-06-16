@@ -30,11 +30,9 @@ export default function TodoItem({
         const { id, todo: todoText, isCompleted } = response.data;
         const newTodo = { id, todo: todoText, isCompleted };
         setTodoInTodos(newTodo);
-        console.log(response);
       }
-    } catch (e: any) {
-      const { message } = e.reponse.data;
-      alert(message);
+    } catch (e: unknown) {
+      alert('잘못된 요청 입니다.');
     }
   }
 
@@ -45,7 +43,8 @@ export default function TodoItem({
 
   function handleCancelBtnClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    setIsModifyMode(!isModifyMode);
+    setTodoWantToModify(todo.todo);
+    setIsModifyMode(false);
   }
 
   function handleModifyInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -91,6 +90,7 @@ export default function TodoItem({
         {isModifyMode ? (
           <div className='space-x-2'>
             <input
+              data-testid='modify-input'
               value={todoWantToModify}
               className='border border-blue-500'
               onChange={handleModifyInputChange}

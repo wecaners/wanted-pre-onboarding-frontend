@@ -15,7 +15,7 @@ export default function SignupForm() {
     }
   });
 
-  const handleSubmit = async (event: React.SyntheticEvent) => {
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     try {
       const response = await signup(values);
@@ -26,7 +26,7 @@ export default function SignupForm() {
     } catch (e: unknown) {
       alert('회원가입에 실패했습니다.');
     }
-  };
+  }
 
   useEffect(() => {
     const { email, password } = values;
