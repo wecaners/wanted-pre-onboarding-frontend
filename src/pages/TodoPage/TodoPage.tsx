@@ -75,7 +75,7 @@ export default function TodoPage() {
         </button>
       </div>
       <div>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </div>
     </article>
   );
