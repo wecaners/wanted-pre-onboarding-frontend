@@ -45,12 +45,11 @@ export default function TodoPage() {
           setTodos(newTodos);
         }
       } catch (e: any) {
-        if (e.code !== 'No_DATA') {
-          alert('Todo를 읽어올 수 없습니다.');
-        }
+        const { message } = e.response.data;
+        alert(message);
       }
     }
-    fetchTodo();
+    setTimeout(() => fetchTodo, 1000);
   }, []);
 
   return (
