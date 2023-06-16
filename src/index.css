@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: url('./assets/global-background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
