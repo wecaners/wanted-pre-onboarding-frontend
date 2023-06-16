@@ -44,8 +44,10 @@ export default function TodoPage() {
           );
           setTodos(newTodos);
         }
-      } catch (e: unknown) {
-        alert('Todo를 읽어올 수 없습니다.');
+      } catch (e: any) {
+        if (e.code !== 'No_DATA') {
+          alert('Todo를 읽어올 수 없습니다.');
+        }
       }
     }
     fetchTodo();
