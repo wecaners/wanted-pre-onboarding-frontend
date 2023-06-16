@@ -15,12 +15,11 @@ export default function SigninForm() {
       password: ''
     }
   });
-  const handleSubmit = async (event: React.SyntheticEvent) => {
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     try {
       const response = await signin(values);
       if (response.status === 200) {
-        console.log(response);
         setAccessToken(response.data.access_token);
         alert('로그인 되었습니다.');
         navigate('/todo');
@@ -28,7 +27,7 @@ export default function SigninForm() {
     } catch (e: unknown) {
       alert('로그인에 실패하셨습니다.');
     }
-  };
+  }
 
   useEffect(() => {
     const { email, password } = values;
