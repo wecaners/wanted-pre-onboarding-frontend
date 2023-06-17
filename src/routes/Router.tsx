@@ -21,12 +21,12 @@ export const router = createBrowserRouter([
         element: <NoAuthGuard />,
         children: [
           {
-            path: '/signin',
-            element: <SigninPage />
-          },
-          {
             path: '/signup',
             element: <SignupPage />
+          },
+          {
+            path: '/signin',
+            element: <SigninPage />
           }
         ]
       },
