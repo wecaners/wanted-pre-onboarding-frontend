@@ -4,9 +4,9 @@ import SignupPage from '../pages/SignupPage/SignupPage';
 import TodoPage from '../pages/TodoPage/TodoPage';
 import NotFoundPage from '../pages/Error/404';
 import LandingPage from '../pages/LandingPage/LandingPage';
-import SigninPage from '../pages/SigninPage/SigninPage';
 import NoAuthGuard from '../components/guards/NoAuthGuard';
 import AuthGuard from '../components/guards/AuthGuard';
+import SigninPage from '../pages/SigninPage/SignInPage';
 
 export const router = createBrowserRouter([
   {
@@ -21,12 +21,12 @@ export const router = createBrowserRouter([
         element: <NoAuthGuard />,
         children: [
           {
-            path: '/signin',
-            element: <SigninPage />
-          },
-          {
             path: '/signup',
             element: <SignupPage />
+          },
+          {
+            path: '/signin',
+            element: <SigninPage />
           }
         ]
       },
